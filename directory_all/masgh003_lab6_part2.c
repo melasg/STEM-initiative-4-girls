@@ -1,7 +1,7 @@
 /*	Author: Melody Asghari
  *  Partner(s) Name: N/A
  *	Lab Section: 022
- *	Assignment: Lab #5  Exercise #2
+ *	Assignment: Lab #6  Exercise #2
  *	Exercise Description: 
  *	Create a simple light game that requires pressing a button on PA0
  * while middle 3 LEDs on PB0, PB1, and PB2 is lit

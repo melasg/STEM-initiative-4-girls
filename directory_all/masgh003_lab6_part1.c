@@ -1,7 +1,7 @@
 /*	Author: Melody Asghari
  *  Partner(s) Name: N/A
  *	Lab Section: 022
- *	Assignment: Lab #5  Exercise #1
+ *	Assignment: Lab #6  Exercise #1
  *	Exercise Description:
  * Create a synchSMS to blink 3 LEDs connected to PB0, PB1, and PB2 in sequence
  *	Implement that synchSM in C using defined method in class

@@ -1,7 +1,7 @@
 /*	Author: home
  *  Partner(s) Name: 
  *	Lab Section:
- *	Assignment: Lab #5  Exercise #3
+ *	Assignment: Lab #6  Exercise #3
  *	Exercise Description:
  *	Buttons connected to PA0 and PA1
  *	Output for PORTB = 7 initially
