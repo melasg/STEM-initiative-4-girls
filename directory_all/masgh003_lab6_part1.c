@@ -3,19 +3,9 @@
  *	Lab Section: 022
  *	Assignment: Lab #5  Exercise #1
  *	Exercise Description:
- * A car has a fuel level sensor:
- *	sets PA3...PA0 to val between 0->15 (full)
- *	LEDs connected to PC5...PC0 should light up.
- *	If fuel level is 1 or 2, PC5 lights 
- * If level is 3 or 4, PC5/PC4 light
- *	If 5-6, PC5..PC3
- *	7-9 -> PC5...PC2
- *	10-12 PC5...C1
- *	13-15 PC5...PC0
- *	PC6 connected to LED that lights iff ≥ level 4
- *	buttons PA3...PA0 to mimic fuel level sensor w/ presses
- *	I acknowledge all content contained herein, excluding template or example
- *	code, is my own original work.
+ * Create a synchSMS to blink 3 LEDs connected to PB0, PB1, and PB2 in sequence
+ *	Implement that synchSM in C using defined method in class
+ *	PB0, PB1, PB2, ... (repeats x3) ...
  * 
  * VIDEO DEMO < URL > 
  */
