@@ -1,6 +1,6 @@
-/*	Author: home
- *  Partner(s) Name: 
- *	Lab Section:
+/*	Author: Melody Asghari
+ *  Partner(s) Name: N/A
+ *	Lab Section: 022
  *	Assignment: Lab #7  Exercise #2
  *	Exercise Description: [optional - include for your own benefit]
  * 	replacing the potentiometer w/ a photoresistor/ 330 ohm resistor.
@@ -17,24 +17,27 @@
 #include "simAVRHeader.h"
 #endif
 
+unsigned char tempA, tempC;
 void ADC_init() {
     ADCSRA |= (1 << ADEN) | (1 << ADSC) | (1 << ADATE);
 }
-
 int main(void) {
     /* Insert DDR and PORT initializations */
+    //from the lecture:
     DDRA = 0x00; PORTA = 0xFF; // LEDS on B7:6
     DDRB = 0xFF; PORTB = 0x00; // LEDS on B7:6
     DDRC = 0xFF; PORTC = 0x00;
     /* Insert your solution below */
-    unsigned short light_state;
-    unsigned char tempB, tempC;
+	unsigned char b_d = 0x00, b_h = 0x00;
     ADC_init();
     while (1) {
-        tempB = (char) light_state;
-        tempC = (char) (a >> 8);
-        PORTB = tempB;
-        PORTC = tempC;
+        unsigned short light_value = ADC; //adc is set up
+        b_d = (char) light_value;
+        b_h = (char) (light_value >> 8);
+        PORD = b_h;
+        PORTB = b_d;
+        }
+        
     }
     return 1;
 }
