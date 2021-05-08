@@ -1,14 +1,19 @@
-/*	Author: home
- *  Partner(s) Name: 
- *	Lab Section:
+/*	Author: Melody Asghari
+ *  Partner(s) Name: N/A
+ *	Lab Section: 022
  *	Assignment: Lab #8  Exercise #2
- *	Exercise Description: [optional - include for your own benefit]
- *  Using the ATmega1284’s PWM functionality, design a system where the notes: C4, D, E, F, G, A, B, and C5,  from the table at the top of the lab, 
- *  The system should scale up/down one note per button press.
-*   When scaling down, the system should not scale below a C.
-*   When scaling up, the system should not scale above a C.
+ *	Exercise Description:
+ *	
+ *  Using the ATmega1284’s PWM functionality, design a system where the notes:
+ *	C4, D, E, F, G, A, B, and C5
+ *  a) The system should scale up/down one note per button press.
+*   b) When scaling down, the system should not scale below a C.
+*   c) When scaling up, the system should not scale above a C.
  *	I acknowledge all content contained herein, excluding template or example
  *	code, is my own original work.
+ *	
+ *	VIDEO DEMO: < URL >
+ *	
  */
 #include <avr/io.h>
 #ifdef _SIMULATE_
@@ -16,6 +21,16 @@
 #endif
 #define checker 0
 #define button (~PINA & 0x07)
+
+//C_4 = 261.63 Hz
+//D_4 = 293.66 Hz
+//E_4 = 329.63 Hz
+//F_4 = 349.23 Hz
+//G_4 = 392.00 Hz
+//A_4 = 440.00 Hz
+//B_4 = 493.88 Hz
+//C_5 = 523.25 Hz
+
 enum PWM_states { INIT, START, PLAY, STOP, RAISE, LOWER} ostan;
 double library[8] = {
     261.63, //C4

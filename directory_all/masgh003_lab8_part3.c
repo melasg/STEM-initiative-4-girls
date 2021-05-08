@@ -1,31 +1,30 @@
-/*	Author: home
- *  Partner(s) Name: 
- *	Lab Section:
+/*	Author: Melody Asghari
+ *  Partner(s) Name: N/A
+ *	Lab Section: 022
  *	Assignment: Lab #8  Exercise #3
- *	Exercise Description: [optional - include for your own benefit]
- *   Using the ATmega1284’s built in PWM functionality, design a system where a short, five-second melody, is played when a button is pressed.
- *  When the button is pressed, the melody should play until completion
- *  Pressing the button again in the middle of the melody should do nothing
- *  If the button is pressed and held, when the melody finishes, it should not repeat until the button is released and pressed again
+ *	Exercise Description:
+ *	
+ *   Using the ATmega1284’s built in PWM functionality
+ *	HAS TO BE COMPLEX, NOT C->B
+ *		design a system where a short, five-second melody, is played when a button is pressed.
+ *  When the button is pressed
+ *	a)	the melody should play until completion
+ *  b) 	Pressing the button again in the middle of the melody should do nothing
+ *  c) 	If the button is pressed and held, when the melody finishes
+ *		it should not repeat until the button is released and pressed again
+ *	
  *	I acknowledge all content contained herein, excluding template or example
  *	code, is my own original work.
+ *	
+ *	VIDEO DEMO: < URL >
+ *	
  */
 #include <avr/io.h>
 #ifdef _SIMULATE_
 #include "simAVRHeader.h"
 #endif
-#define button (~PINA & 0x01)
-enum PWM_states { INIT, START, PLAY, STOP} ostan;
-double library[9] = {
-    261.63, //C4
-    293.66, //D4
-    329.63, //E4
-    349.23, //F4
-    392.00, //G4
-    440.00, //A4
-    493.88, //B4
-    523.25}; //C5
-unsigned char key = 9;
+//#define button (~PINA & 0x01)
+
 
 //static double C4 = 261.63, D4 = 293.66, E4 = 329.63; //no magic numbers
 // //rest of the library
@@ -100,41 +99,62 @@ ISR(TIMER1_COMPA_vect) {
 //One array holds the sequence of notes for the melody.
 //Another array holds the times that each note is held.
 //The final array holds the down times between adjacent notes.
+
+
+//C_4 = 261.63 Hz
+//D_4 = 293.66 Hz
+//E_4 = 329.63 Hz
+//F_4 = 349.23 Hz
+//G_4 = 392.00 Hz
+//A_4 = 440.00 Hz
+//B_4 = 493.88 Hz
+//C_5 = 523.25 Hz
+
+
+double library[10] = {
+	0,		//idk what this is
+    261.63, //C4
+    293.66, //D4
+    329.63, //E4
+    349.23, //F4
+    392.00, //G4
+    440.00, //A4
+    493.88, //B4
+    523.25 }; //C5
+unsigned char key = 0x00;
+unsigned complex[][] = {};
+
+enum PWM_states { init, tran, P_A0, R_A0, H_A0} ostan;
+unsigned char buttonctrl = (~PINA & 0x01);
 void player() {
-    switch(ostan) {
-        case INIT:
-        ostan = START;
-        break;
-        case START:
-        if (button == 0x01) {
-            ostan = PLAY;
-            break;
-        } else {
-            ostan = START;
-        }
-        break;
-        case PLAY:
-        break;
-        case STOP:
-        ostan = PLAY;
-        break;
-    }
-    switch(ostan) {
-        case INIT:
-        break;
-        case START:
-        set_PWM(0);
-        break;
-        case PLAY:
-        if (key > 0){
-            set_PWM(tone[key]);
-            key--;
-            ostan = STOP;
-        }
-        break;
-        case STOP:
-        break;
-    }
+	switch (ostan) {
+		case init:
+				ostan = st1;
+			break;
+		case tran:
+				if (buttonctrl) {
+					ostan = P_A0;
+				}
+			break;
+		case P_A0:
+				if (!buttonctrl) {
+					ostan = R_A0;
+				}
+			break;
+		case R_A0:
+				if (buttonctrl && (key == 26)) {
+					ostan = H_A0;
+				} else {
+					key = (key == 26) ? 0x01 : (key + 1);
+				}
+			break;
+		case H_A0:
+				key = 0x00;
+				if (!buttonctrl) {
+					ostan = tran;
+				}
+			break;
+	}
 }
 //scaling from C to B is NOT complex
 int main(void) {
@@ -142,12 +162,16 @@ int main(void) {
     DDRA = 0x00; PORTA = 0xFF;
     DDRB = 0xFF; PORTB = 0x00;
     /* Insert your solution below */
-    ostan = INIT;
+
     PWM_on();
-    TimerSet(500);
+//    TimerSet(500);
     TimerOn();
+
     while (1) {
+        
         player();
+        TimerSet((complex[][key] * 00 ))
+        //
         while(!TimerFlag);
         TimerFlag = 0;
     }
