@@ -1,11 +1,19 @@
-/*	Author: home
- *  Partner(s) Name: 
- *	Lab Section:
- *	Assignment: Lab #  Exercise #
- *	Exercise Description: [optional - include for your own benefit]
- * Extend the previous exercise to allow a user to adjust the sound frequency up or down using buttons connected to PA0 (up) and PA1 (down). Using our 1 ms timer abstraction, the fastest you'll be able to pulse is 1 ms on and 1 ms off, meaning 500 Hz. Again: Don’t use the PWM for this task. Hint: You'll probably want to introduce another synchSM that polls the buttons and sets a global variable storing the current frequency that in turn is read by the frequency generator task. 
+/*	Author: Melody Asghari
+ *  Partner(s) Name: N/A
+ *	Lab Section: 022
+ *	Assignment: Lab #9  Exercise #4
+ *	Exercise Description: 
+ * Extend the previous exercise to allow a user
+ *		adjust the sound frequency up or down using buttons connected to PA0 (up) and PA1 (down)
+ *	Using our 1 ms timer abstraction, fastest you'll be able to pulse is 1 ms on/off, meaning 500 Hz
+ *	Again: Don’t use the PWM for this task.
+ *	(Hint: You'll probably want to introduce another synchSM that polls the buttons and sets a global variable storing the current frequency that in turn is read by the frequency generator task.)
+ *	
  *	I acknowledge all content contained herein, excluding template or example
  *	code, is my own original work.
+ *	
+ *	VIDEO DEMO: < URL >
+ *	
  */
 #include <avr/io.h>
 #ifdef _SIMULATE_

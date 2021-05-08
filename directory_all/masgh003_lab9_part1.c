@@ -1,14 +1,21 @@
-/*	Author: home
- *  Partner(s) Name: 
- *	Lab Section:
+/*	Author: Melody Asghari
+ *  Partner(s) Name: N/A
+ *	Lab Section: 022
  *	Assignment: Lab #9  Exercise #1
- *	Exercise Description: [optional - include for your own benefit]
+ *	Exercise Description: 
  * Connect LEDs to PB0, PB1, PB2, and PB3. 
- * In one state machine (ThreeLEDsSM), output to a shared variable (threeLEDs) the following behavior: set only bit 0 to 1, then only bit 1, then only bit 2 in sequence for 1 second each. 
-* In a second state machine (BlinkingLEDSM), output to a shared variable (blinkingLED) the following behavior: set bit 3 to 1 for 1 second, then 0 for 1 second. 
-* In a third state machine (CombineLEDsSM), combine both shared variables and output to the PORTB. 
+ * In one state machine (ThreeLEDsSM)
+ *	output to shared variable (threeLEDs) the following:
+ *		set only bit 0 to 1, then only bit 1, then only bit 2 in sequence for 1 second each. 
+ *	In a second state machine (BlinkingLEDSM)
+ *		output to a shared variable (blinkingLED) the following behavior:
+ *		set bit 3 to 1 for 1 second, then 0 for 1 second. 
+ *	In a third state machine (CombineLEDsSM), combine both shared variables and output to the PORTB. 
  *	I acknowledge all content contained herein, excluding template or example
  *	code, is my own original work.
+ *	
+ *	VIDEO DEMO: < URL > 
+ *	
  */
 #include <avr/io.h>
 #ifdef _SIMULATE_

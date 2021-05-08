@@ -1,11 +1,17 @@
-/*	Author: home
- *  Partner(s) Name: 
- *	Lab Section:
- *	Assignment: Lab #  Exercise #
- *	Exercise Description: [optional - include for your own benefit]
- * To the previous exercise's implementation, connect your speaker's red wire to PB4 and black wire to ground. Add a third task that toggles PB4 on for 2 ms and off for 2 ms as long as a switch on PA2 is in the on position. Don’t use the PWM for this task.
+/*	Author: Melody Asghari
+ *  Partner(s) Name: N/A
+ *	Lab Section: 022
+ *	Assignment: Lab #9  Exercise #3
+ *	Exercise Description: 
+ * To the previous exercise's implementation
+ *	connect your speaker's red wire to PB4 and black wire to ground
+ *	Add a third task that toggles PB4 on/off for 2 ms as long as a switch on PA2 in the on position
+ *	
  *	I acknowledge all content contained herein, excluding template or example
  *	code, is my own original work.
+ *	
+ *	VIDEO DEMO: < URL >
+ *	
  */
 #include <avr/io.h>
 #ifdef _SIMULATE_

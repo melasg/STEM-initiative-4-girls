@@ -1,11 +1,15 @@
-/*	Author: home
- *  Partner(s) Name: 
- *	Lab Section:
+/*	Author: Melody Asghari
+ *  Partner(s) Name: N/A
+ *	Lab Section: 022
  *	Assignment: Lab #9  Exercise #2
- *	Exercise Description: [optional - include for your own benefit]
- * Modify the above example so the threeLEDs light for 300 ms, while blinkingLED’s LED still blinks 1 second on and 1 second off.
+ *	Exercise Description: 
+ * Modify the above example so the threeLEDs light for 300 ms
+ *		while blinkingLED’s LED still blinks 1 second on and 1 second off.
  *	I acknowledge all content contained herein, excluding template or example
  *	code, is my own original work.
+ *	
+ *	VIDEO DEMO: < URL >
+ *	
  */
 #include <avr/io.h>
 #ifdef _SIMULATE_
