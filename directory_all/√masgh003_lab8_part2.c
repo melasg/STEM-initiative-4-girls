@@ -19,8 +19,8 @@
 #ifdef _SIMULATE_
 #include "simAVRHeader.h"
 #endif
-#define checker 0
-#define button (~PINA & 0x07)
+//#define checker 0
+//#define button (~PINA & 0x07)
 
 //C_4 = 261.63 Hz
 //D_4 = 293.66 Hz
@@ -31,17 +31,7 @@
 //B_4 = 493.88 Hz
 //C_5 = 523.25 Hz
 
-enum PWM_states { INIT, START, PLAY, STOP, RAISE, LOWER} ostan;
-double library[8] = {
-    261.63, //C4
-    293.66, //D4
-    329.63, //E4
-    349.23, //F4
-    392.00, //G4
-    440.00, //A4
-    493.88, //B4
-    523.25}; //C5
-unsigned char key = 8;
+
 
 //static double C4 = 261.63, D4 = 293.66, E4 = 329.63; //no magic numbers
 // //rest of the library
@@ -116,82 +106,62 @@ ISR(TIMER1_COMPA_vect) {
 //One array holds the sequence of notes for the melody.
 //Another array holds the times that each note is held.
 //The final array holds the down times between adjacent notes.
+enum PWM_states { init, start, p1_start, p1_tran, p2_start, p2_tran, p3_start, p3_tran} ostan;
+unsigned buttons = (~PINA & 0x07);
+double library[8] = {
+    261.63, //C4
+    293.66, //D4
+    329.63, //E4
+    349.23, //F4
+    392.00, //G4
+    440.00, //A4
+    493.88, //B4
+    523.25}; //C5
+unsigned char key = 8; //use to vary
+
 void player() {
-    switch(ostan) {
-        case INIT:
-        ostan = START;
-        break;
-        case START:
-        if (button == 0x01) {
-            ostan = STOP;
-            break;
-        } else if (button == 0x02) {
-            ostan = RAISE;
-            break;
-        } else if (button == 0x04) {
-            ostan = LOWER;
-        } else {
-            ostan = START;
-        }
-        break;
-        case PLAY:
-        if (button== 0x00) {
-            ostan = START;
-        } else {
-            ostan = PLAY;
-        }
-        break;
-        case STOP:
-        if (checker == 1) {
-            PWM_off();
-            checker = 0;
-            ostan = PLAY;
-            break;
-        } else if (checker == 0) {
-            PWM_on();
-            checker = 1;
-            ostan = PLAY;
-            break;
-        }
-        break;
-        case RAISE:
-        ostan = PLAY;
-        break;
-        case LOWER:
-        ostan = PLAY;
-        break;
-    }
-    switch(ostan) {
-        case INIT:
-        break;
-        case START:
-        break;
-        case PLAY:
-            set_PWM(tone[key]);
-            break;
-        break;
-        case STOP:
-        break;
-        break;
-        case RAISE:
-        key++;
-        if (key > 7) {
-            key = 7;
-            break;
-        } else {
-            key = key;
-        } break;
-        break;
-        case LOWER:
-        key--;
-        if (key < 0) {
-            key = 0;
-            break;
-        } else {
-            key = key;
-        }
-        break;
-    }
+	switch(ostan) {
+		case init:
+			ostan = start;
+		break;
+		case start:
+			if (buttons = 0x01) {
+				ostan = p1_start;
+			}
+			if (buttons = 0x02) {
+				ostan = p2_start;
+			}
+			if (buttons = 0x04) {
+				ostan = p3_start;
+			}
+		break;
+		case p1_start:
+			if (!(buttons & 0x07)) {
+				ostan = p1_tran;
+			}
+		break;
+		case p1_tran:
+		key = (key == 0x00) ? 0x01 : 0x00; //init
+		ostan = start;
+		break;
+		case p2_start:
+						if (!(buttons & 0x07)) {
+				ostan = p2_tran;
+			}
+		break;
+		case p2_tran:
+				key = (key == 0x08) ? 0x08 : key + 1; //hi
+				ostan = start;
+		break;
+		case p3_start;
+					if (!(buttons & 0x07)) {
+				ostan = p3_tran;
+			}
+		break;
+		case p3_tran:
+				key = (key == 0x01) ? 0x01 : key - 1; //lo
+		break;
+	}
 }
 //scaling from C to B is NOT complex
 int main(void) {
@@ -201,12 +171,13 @@ int main(void) {
     /* Insert your solution below */
     ostan = INIT;
     PWM_on();
-    TimerSet(500);
     TimerOn();
+        TimerSet(100);
     while (1) {
-        player();
-        while(!TimerFlag);
+	    while(!TimerFlag);
         TimerFlag = 0;
+        player();
+        set_PWM(library[key]);
     }
     return 1;
 }

@@ -122,7 +122,7 @@ double library[10] = {
     493.88, //B4
     523.25 }; //C5
 unsigned char key = 0x00;
-unsigned complex[][] = {};
+unsigned complex[4][4] = {{2,1,9,3},{1,5,7,4},{8,2,4,1},{5,2,6,4}};
 
 enum PWM_states { init, tran, P_A0, R_A0, H_A0} ostan;
 unsigned char buttonctrl = (~PINA & 0x01);
@@ -168,12 +168,12 @@ int main(void) {
     TimerOn();
 
     while (1) {
-        
-        player();
-        TimerSet((complex[][key] * 00 ))
-        //
         while(!TimerFlag);
-        TimerFlag = 0;
+        TimerFlag = 0;        
+        PORTB = PORTB | (1 << (PORTB & 0x03));
+        player();
+        TimerSet((complex[1][key] * 7 ))
+        set_PWM(library[complex[0][key]]);
     }
     return 1;
 }
