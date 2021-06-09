@@ -5,7 +5,7 @@
  *	I acknowledge all content contained herein, excluding template or example
  *	code, is my own original work.
  * YES! I acknowledge this. Put too much blood, sweat, and tears in this!
-* video link: 
+* video link: https://github.com/melasq/Microcontroller-Projects-for-Babies/blob/main/dir_just_gradescope/vid%20uploads%20if%20peertube%20isn't%20working/upload.mp4
 * 
  */
 
