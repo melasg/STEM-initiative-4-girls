@@ -1,0 +1,174 @@
+story_line0
+   HEY YOU, YOU'RE FINALLY AWAKE...    
+      DOVAKIIN
+option_0,option_0
+
+story_line1
+YOU WERE TRYING
+TO CROSS THE BORDER RIGHT?
+option_1, option_1
+
+story_line2
+WALKED RIGHT INTO THAT
+IMPERIAL AMBUSH SAME AS US
+option_2, option_2
+
+story_line3
+ YOU THERE, YOU AND ME,
+WE SHOULDN'T BE HERE.
+option_3, option_3
+
+story_line4
+YOU'RE THE LEADER OF THE REBELLION
+IF THEY'VE CAPTURED YOU...OH GOD
+option_4, option_4
+
+story_line5
+ I DON'T KNOW WHERE WE'RE GOING
+ BUT SOVNGARDE AWAITS
+option_5, option_5
+
+story_line6
+END OF THE LINE.
+LET'S GO 
+option_6, option_6
+
+story_line7
+ YOU'VE GOT TO TELL THEM 
+ THIS IS A MISTAKE!
+story_line8, story_line8
+
+story_line8
+ IT HAS BEEN AN HONOR
+ JARL OF WINDHELM
+option_8, option_8
+
+story_line9
+LOKIR BREAKS INTO A RUN
+ARCHERS SHOOT LOKIR'S KNEE
+story_line10, story_line10
+
+story_line10
+ WHAT SHOULD WE DO, CAPTAIN?
+ HE'S NOT ON THE LIST..
+option_10, option_10
+
+story_line11
+FORGET THE LIST..
+HE GOES STRAIGHT ON THE BLOCK.
+option_11, option_11
+
+story_line12
+STORMCLOAK SOLDIER HESITATES
+CAPTAIN IS DISSATISFIED
+story_line13, story_line13
+
+story_line13
+CAPTAIN BEHEADS SOLDIER 
+MY ANCESTORS SMILE AT ME
+option_14, option_14
+
+story_line14
+GUARDS! GET THE TOWNSFOLK..
+SENTRIES, WHAT DO YOU SEE?
+option_14, option_14
+
+story_line15
+IT'S THE CLOUDS..
+*Dragon roar*
+option_15, option_15
+
+story_line16
+RALOF GRABS DOVAKIIN
+COME ON! WE WON'T GET ANOTHER CHANCE..
+option_16, option_16
+
+story_line17
+TO THE TOWER
+I'LL UNBIND JARL ULFRIC
+story_line18, story_line18
+
+story_line18
+COULD THE LEGENDS BE TRUE?
+NOW JUMP, WE GOT TO GET GOING!
+BAD, BAD
+
+option_0
+< Im not DOVAKIIN
+> Hello
+BAD, story_line1
+
+option_1
+< where are we?
+> where am i?
+GAMEOVER, story_line2
+
+option_2
+< I did?
+> I'm not affiliated with the empire..
+story_line3, story_line4
+
+option_3
+< rat him out to the guards
+> I'm in.
+GAMEOVER, story_line4
+
+option_4
+< Ask about the fate of skyrim
+> ask about your fate
+story_line5, story_line6
+
+option_5
+< try to conjure flame atronach
+> sneak a lockpick
+BAD, story_line7
+
+option_6
+< run
+> call for the guards
+BAD, story_line5
+
+option_8
+< Ask about the dragonborn
+> Ask about the rebellion
+story_line9, BAD
+
+option_10
+< try to plead your innocence
+> Stay silent
+BAD, story_line11
+
+option_11
+< Offer yourself up on the block
+> Run away
+BAD, story_line12
+
+option_13
+> whisper to townspeople
+< warn the guard
+story_line14, BAD
+
+option_14
+> try to run
+< sit and accept your fate
+BAD, story_line15
+
+option_15
+> take a weapon
+< unbind Jarl Ulfric
+story_line16, BAD
+
+option_16
+> jump
+< wait
+story_line17, BURNED
+
+BURNED
+You have been
+burned to death by the dragon
+GAMEOVER, GAMEOVER
+
+GAMEOVER
+    G A M E
+     O V E R !
+story_line0, story_line0

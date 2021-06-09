@@ -43,9 +43,41 @@
 
 
 //ok start now
-void main() {
-    DDRA = 0xFF;
-    DDRD = 0xFF;
-    _delay_ms(50);
 
-}
+// objects systems
+
+//define object
+///get value of a slot in an object or parents
+
+//update slot in object
+
+//skyrim:
+//world
+// while: playing
+// move
+// take something
+// drop something
+// light torch?
+// unlock
+// steal
+//add conditions for DON'T to each of those ^
+//player starts in bravil
+//define object of player in world
+
+// item: by class
+//value of where item is assigned
+// *MC* picks up *item*
+// remove item command
+// item is not found
+// drop item command
+// item not found in inventory to drop/use
+
+// locations:
+// cyrodil
+// bravil
+// thieve's guild
+// magic academy
+// cyrodil palace
+// cyrodil lakefront
+// cyrodil stables
+// define objects for items:
